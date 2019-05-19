@@ -64,7 +64,7 @@
           </v-layout>
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
-              <v-time-picker v-model="time" format="24h"></v-time-picker>
+              <v-time-picker v-model="time"></v-time-picker>
             </v-flex>
           </v-layout>
           <v-layout>
