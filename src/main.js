@@ -3,6 +3,7 @@ import './plugins/vuetify'
 import App from './App.vue'
 import router from './router'
 import Vuetify from 'vuetify'
+import { store } from './store'
 
 // Helpers
 import colors from 'vuetify/es5/util/colors'
@@ -19,5 +20,6 @@ Vue.use(Vuetify, {
 
 new Vue({
   router,
+  store,
   render: h => h(App),
 }).$mount('#app')
