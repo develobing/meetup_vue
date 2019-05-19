@@ -23,7 +23,9 @@ export const store = new Vuex.Store({
         description: 'sdafasdfasdf asdf 324 234 23 423 423sdaf'
       }
     ],
-    user: null
+    user: null,
+    loading: false,
+    error: null
   },
   mutations: {
     createMeetup(state, payload) {
@@ -31,6 +33,15 @@ export const store = new Vuex.Store({
     },
     setUser(state, payload) {
       state.user = payload
+    },
+    setLoading(state, payload) {
+      state.loading = payload
+    },
+    setError(state, payload) {
+      state.error = payload
+    },
+    clearError(state) {
+      state.error = null
     }
   },
   actions: {
@@ -52,8 +63,11 @@ export const store = new Vuex.Store({
     signUserUp({
       commit
     }, payload) {
+      commit('clearError')
+      commit('setLoading', true)
       firebase.auth().createUserWithEmailAndPassword(payload.email, payload.password)
         .then(user => {
+          commit('setLoading', false)
           console.log('Completing Signing Up! - User : ', user)
           const newUser = {
             id: user.user.uid,
@@ -62,14 +76,19 @@ export const store = new Vuex.Store({
           commit('setUser', newUser)
         })
         .catch(err => {
+          commit('setLoading', false)
+          commit('setError', err)
           console.log('signUserUp - err : ', err)
         })
     },
     signUserIn({
       commit
     }, payload) {
+      commit('clearError')
+      commit('setLoading', true)
       firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
         .then(user => {
+          commit('setLoading', false)
           console.log('Completing Signing In! - User : ', user)
           const newUser = {
             id: user.user.uid,
@@ -78,8 +97,15 @@ export const store = new Vuex.Store({
           commit('setUser', newUser)
         })
         .catch(err => {
+          commit('setLoading', false)
+          commit('setError', err)
           console.log('signUserIn - err : ', err)
         })
+    },
+    clearError({
+      commit
+    }) {
+      commit('clearError')
     }
   },
   getters: {
@@ -100,6 +126,12 @@ export const store = new Vuex.Store({
     },
     user(state) {
       return state.user
+    },
+    loading(state) {
+      return state.loading
+    },
+    error(state) {
+      return state.error
     }
   }
 })

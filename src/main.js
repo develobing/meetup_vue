@@ -8,6 +8,7 @@ import {
   store
 } from './store'
 import DateFilter from './filters/date'
+import AlertCmp from './components/Shared/Alert'
 
 // Helpers
 import colors from 'vuetify/es5/util/colors'
@@ -21,6 +22,7 @@ Vue.use(Vuetify, {
   }
 })
 Vue.filter('date', DateFilter)
+Vue.component('app-alert', AlertCmp)
 
 new Vue({
   router,
