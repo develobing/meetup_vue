@@ -8,7 +8,7 @@ export const store = new Vuex.Store({
     loadedMeetups: [{
         id: "sdafskdajhfskda23",
         title: "Meetup in Newyork",
-        date: '2017-07-17',
+        date: new Date(),
         imageUrl: "https://images.musement.com/cover/0001/93/thumb_92294_cover_header.jpeg",
         location: 'New York',
         description: 'sdafsda fasd fsda fsda fasd fasd f'
@@ -16,7 +16,7 @@ export const store = new Vuex.Store({
       {
         id: "11sdafsk2sdafkda223",
         title: "Meetup in Paris",
-        date: '2017-07-19',
+        date: new Date(),
         imageUrl: "https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg",
         location: 'Paris',
         description: 'sdafasdfasdf asdf 324 234 23 423 423sdaf'
