@@ -38,6 +38,11 @@ new Vue({
       messagingSenderId: "476000286232",
       appId: "1:476000286232:web:cb30624e15c1a28b"
     })
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.$store.dispatch('autoSignIn', user)
+      }
+    })
 
     this.$store.dispatch('loadMeetups')
   }
