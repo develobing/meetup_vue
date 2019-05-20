@@ -10,6 +10,8 @@ import {
 import DateFilter from './filters/date'
 import AlertCmp from './components/Shared/Alert'
 import EditMeetupDetailDialog from './components/Meetup/Edit/EditMeetupDetailDialog'
+import EditMeetupDateDialog from './components/Meetup/Edit/EditMeetupDateDialog'
+import EditMeetupTimeDialog from './components/Meetup/Edit/EditMeetupTimeDialog'
 
 // Helpers
 import colors from 'vuetify/es5/util/colors'
@@ -24,7 +26,9 @@ Vue.use(Vuetify, {
 })
 Vue.filter('date', DateFilter)
 Vue.component('app-alert', AlertCmp)
-Vue.component('app-edit-meetup-details-dialog', EditMeetupDetailDialog)
+Vue.component('app-edit-meetup-detail-dialog', EditMeetupDetailDialog)
+Vue.component('app-edit-meetup-date-dialog', EditMeetupDateDialog)
+Vue.component('app-edit-meetup-time-dialog', EditMeetupTimeDialog)
 
 new Vue({
   router,
