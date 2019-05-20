@@ -12,6 +12,7 @@ import AlertCmp from './components/Shared/Alert'
 import EditMeetupDetailDialog from './components/Meetup/Edit/EditMeetupDetailDialog'
 import EditMeetupDateDialog from './components/Meetup/Edit/EditMeetupDateDialog'
 import EditMeetupTimeDialog from './components/Meetup/Edit/EditMeetupTimeDialog'
+import RegisterDialog from './components/Meetup/Registration/RegisterDialog'
 
 // Helpers
 import colors from 'vuetify/es5/util/colors'
@@ -29,6 +30,7 @@ Vue.component('app-alert', AlertCmp)
 Vue.component('app-edit-meetup-detail-dialog', EditMeetupDetailDialog)
 Vue.component('app-edit-meetup-date-dialog', EditMeetupDateDialog)
 Vue.component('app-edit-meetup-time-dialog', EditMeetupTimeDialog)
+Vue.component('app-meetup-register-dialog', RegisterDialog)
 
 new Vue({
   router,
@@ -47,6 +49,7 @@ new Vue({
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         this.$store.dispatch('autoSignIn', user)
+        this.$store.dispatch('fetchUserData')
       }
     })
 
